@@ -1,0 +1,5 @@
+/* pages/diy/template/index.wxss */
+.a{
+  position: static;
+  
+}

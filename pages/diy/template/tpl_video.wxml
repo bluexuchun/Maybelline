@@ -1,0 +1,5 @@
+<block>
+
+   <video  id="Video" src="{{diyitem.params.videourl}}"   bindpause ='bindpause' controls style='height:{{diyitem.style.ratio==0?screenWidth/8*9:""}}{{diyitem.style.ratio==1?screenWidth/2*3:""}}{{diyitem.style.ratio==2?screenWidth*2:""}}rpx;width:100%'  autoplay='{{true}}'>   
+    </video>      
+</block>

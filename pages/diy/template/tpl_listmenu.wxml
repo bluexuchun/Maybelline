@@ -1,0 +1,15 @@
+<view class='fui-cell-group' style="background-color: {{diyitem.style.background}};margin-top:{{diyitem.style.margintop==0?0:diyitem.style.margintop + 'rpx'}};margin-left:30rpx;margin-right:30rpx;">
+    <view wx:if="{{childitem.linkurl != 'onlineservice'}}" class='fui-cell' wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem" data-url='{{childitem.linkurl}}' bindtap='navigate' data-phone='{{childitem.phone}}' data-appurl='{{childitem.appurl}}' data-appid='{{childitem.appid}}'>
+        <view class='fui-cell-icon' style='color:{{diyitem.style.iconcolor}}'wx:if='{{childitem.iconclass}}'> <text class='icox {{childitem.iconclass}}'></text></view>
+        <view class='fui-cell-text' style='color:{{diyitem.style.textcolor}};font-size:{{diyitem.style.fontsize}}rpx'>{{childitem.text}}</view>
+        <view class='fui-cell-remark' style='color:{{diyitem.style.remarkcolor}}'>{{childitem.remark}}</view>
+        <view class='fui-celldefault {{diyitem.data.length == 1 ? "fui-cellline" : diyitem.data.length - 1 == childid ? "":"fui-cellline"}}'></view>
+    </view>
+    <view wx:if="{{childitem.linkurl == 'onlineservice'}}" class='fui-cell' wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem" data-url='{{childitem.linkurl}}' data-phone='{{childitem.phone}}' data-appurl='{{childitem.appurl}}' data-appid='{{childitem.appid}}' style="position:relative;">
+        <button open-type='contact' style="width:100%;height:100%;position:absolute;top:0px;left:0px;opacity:0;"></button>
+        <view class='fui-cell-icon' style='color:{{diyitem.style.iconcolor}}'wx:if='{{childitem.iconclass}}'> <text class='icox {{childitem.iconclass}}'></text></view>
+        <view class='fui-cell-text' style='color:{{diyitem.style.textcolor}};font-size:{{diyitem.style.fontsize}}rpx'>{{childitem.text}}</view>
+        <view class='fui-cell-remark' style='color:{{diyitem.style.remarkcolor}}'>{{childitem.remark}}</view>
+        <view class='fui-celldefault {{diyitem.data.length == 1 ? "fui-cellline" : diyitem.data.length - 1 == childid ? "":"fui-cellline"}}'></view>
+    </view>
+</view>

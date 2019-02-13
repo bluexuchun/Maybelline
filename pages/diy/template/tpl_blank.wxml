@@ -1,0 +1,2 @@
+<view style='background:#ffffff;height:{{diyitem.style.height}}rpx;margin-left:30rpx;margin-right:30rpx;border:0px;outline:none;'>
+</view>

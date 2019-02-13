@@ -1,0 +1,46 @@
+/* /member/pages/member/tuihuo/tuihuo.wxss */
+page{
+  width:100%;
+  background-color: #fff;
+}
+.container{
+  padding: 20rpx
+}
+.detail-con{
+  background-color:#fff;
+  padding:20rpx;
+  color:#333;
+  box-sizing: border-box;
+
+}
+.logo{
+  padding-bottom:40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom:1rpx solid #ddd;
+
+
+}
+.logo image{
+  width:335rpx;
+  height: 59rpx;
+}
+
+.policy-inner{
+  padding:40rpx 0;
+  box-sizing:border-box;
+
+}
+.title{
+  font-size:26rpx;
+  line-height:1.5;
+
+}
+.content{
+  font-size:22rpx;
+  line-height:2;
+  margin:25rpx 0 20rpx 0;
+  color:#999;
+
+}

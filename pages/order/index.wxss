@@ -1,0 +1,104 @@
+/* pages/order/list/index.wxss */
+@import '/static/css/order.wxss';
+page{
+    background:#f7f7f7;
+    }
+.goods-info{
+    width: auto
+}
+.order{
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+}
+.page.navbar,.page.footer{
+  padding-bottom:0rpx
+}
+.order .contain{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.order .btn{
+    margin:10rpx 0 10rpx 20rpx;
+    padding: 0 30rpx;
+    height:50rpx;
+    line-height: 50rpx;
+    border-radius: 40rpx;
+    font-size: 26rpx;
+}
+.order .empty{
+    padding:260rpx 150rpx;
+    font-size: 34rpx;
+}
+.order .empty .btn{
+    margin: 0;
+    border-radius: 100rpx;
+    height: 76rpx;
+    line-height:76rpx;
+    width:  280rpx;
+    font-size: 30rpx;
+    padding:0
+}
+.order .light{
+    height: 240rpx;
+    width: 240rpx;
+}
+.order .text-cancel{
+    padding: 10rpx;
+    margin-bottom: 30rpx;
+    margin-top:25rpx;
+    font-size: 30rpx;
+}
+.order .order-num{
+    flex: 1;
+}
+.fui-tab-scroll .item {
+    padding: 0 30rpx;
+}
+.order .fui-list-inner .subtitle {
+  line-height:44rpx;
+}
+.no-border .fui-list-inner .subtitle {
+  line-height:1.5;
+}
+.fui-list-inner.text-right:empty {display: none}
+.row-remark{
+    text-align: right;
+    position: relative;
+    flex-shrink: 0;
+    padding-left:20rpx;
+    color: #aaa;
+    font-size: 26rpx;
+    line-height: 1.5
+}
+.nav-tab{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+  font-size: 24rpx;
+  white-space: nowrap;
+}
+.nav-tab .nav-tab-item{
+  color: #7e7e7e;
+  font-size: 24rpx;
+  display: inline-block;
+  margin-right: 45rpx;
+  padding:8rpx 0rpx;
+}
+.nav-tab .nav-tab-item:last-child{
+  margin-right: 0rpx;
+}
+.nav-tab .nav-tab-item.cur{
+  /* text-decoration: underline; */
+  color: #000000;
+  /* font-weight: 700; */
+  font-size: 24rpx;
+  padding:0rpx 2rpx;
+  border-bottom:1px solid #f53e65;
+
+  
+}

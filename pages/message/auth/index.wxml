@@ -1,0 +1,21 @@
+<view class="page">
+    <!-- <view class="inner"> -->
+        <!-- <image src="/static/images/icon/cry-220.png" class="icon" />
+        <view class="text">{{ close!=1?"您取消了授权 >_<|||":text }}</view>
+        <view class="text1" wx:if="{{ close!=1 }}">您可以在小程序列表删除并重新进入</view>
+        <button open-type='{{shouquan}}' bindtap='haha'>重新授权</button> -->
+        <!-- <view class='image'><image src="{{imgUrl + 'plugin/app/static/images/wxapp/accredit.png'}}" /></view>
+        <view class='text' wx:if="{{!close}}">小程序需要获取您的授权<text>\n</text>才能为您提供后续服务哦</view>
+         <button class='btn' wx:if="{{!close}}" open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo" style='background:#000;border:none'>点击授权</button>
+        <view class='text' wx:if="{{close}}">{{text}}</view>
+    </view> -->
+     <view class="auth_page">
+        <!-- <view class='auth_main'> 
+            <image src='/static/images/auth_logo.png'></image>
+        </view> -->
+        <image class='auth_main' src='/static/images/auth.png' mode="widthFix"></image>
+        <button class='newbtn' wx:if="{{!close}}" open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo" style='background:rgba(0,0,0,0);border:none'>
+          <!-- <image src='/static/images/auth-btn.png' class='auth-logo'></image> -->
+        </button>
+     </view>
+</view>

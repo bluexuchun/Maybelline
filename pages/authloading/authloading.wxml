@@ -1,0 +1,3 @@
+<view class='loadings'>
+   <image src='/static/images/ysl.gif' class='loadings-img loading' mode="widthFix"></image>
+</view>

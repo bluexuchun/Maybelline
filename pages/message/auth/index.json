@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "美宝莲纽约官方商城",
+  "usingComponents": {
+    "loading": "/components/loading"
+  }
+}
