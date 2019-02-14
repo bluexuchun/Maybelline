@@ -23,7 +23,7 @@
 </view> -->
 <!--搜索end-->
 
-<view class="category-search" style="background:rgba(0,0,0,0);padding-left: 50rpx;padding-right: 50rpx;padding-top: 50rpx;padding-bottom: 20rpx">
+<view class="category-search" style="background:rgba(0,0,0,0);padding-left: 50rpx;padding-right: 50rpx;padding-top: 20rpx;padding-bottom: 20rpx">
   <view class="weui-flex">
     <view class="weui-flex__item category-search-form">
       <view class="flex-head-search" id="searchBar" style='padding:0 20rpx;display: flex;align-items: center;justify-content: space-between;position:relative;color:{{diyitem.style.color}};background:{{diyitem.style.background}};border-style:{{diyitem.style.searchstyle}};;text-align:{{diyitem.style.textalign}};border-radius:{{diyitem.style.searchstyle =="radius"?"10rpx":(diyitem.style.searchstyle=="round"?"50rpx":"")}};border:1px solid {{diyitem.style.inputbackground}}'>

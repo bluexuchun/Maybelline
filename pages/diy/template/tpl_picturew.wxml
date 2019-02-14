@@ -54,9 +54,9 @@
         <block>
           <swiper-item class='fui-picturew'   wx:for="{{diyitem.data_temp}}" wx:for-index="childid" wx:for-item="childitem">
           <view class='item' class='item' wx:for="{{childitem}}" wx:for-index="pic_index" wx:for-item="pic_item">
-            <navigator class='navigator' url="{{pic_item.linkurl}}" data-url='{{pic_item.linkurl}}' data-phone='{{pic_item.phone}}' data-appid='{{pic_item.appid}}' data-appurl='{{pic_item.appurl}}' style='padding:{{diyitem.style.paddingtop==0?0:diyitem.style.paddingtop + "rpx"}} {{diyitem.style.paddingleft==0?0:diyitem.style.paddingleft + "rpx"}}'>
+            <view class='navigator' bindtap='navigate' data-url='{{pic_item.linkurl}}' data-phone='{{pic_item.phone}}' data-appid='{{pic_item.appid}}' data-appurl='{{pic_item.appurl}}' style='padding:{{diyitem.style.paddingtop==0?0:diyitem.style.paddingtop + "rpx"}} {{diyitem.style.paddingleft==0?0:diyitem.style.paddingleft + "rpx"}}'>
                 <image class='{{diyitem.style.navstyle}}' src="{{pic_item.imgurl}}" mode='widthFix'></image>
-            </navigator>
+            </view>
             </view>
           </swiper-item>
         </block>

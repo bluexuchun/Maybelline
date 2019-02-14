@@ -627,7 +627,17 @@ Page({
         var phone = e.currentTarget.dataset.phone
         var appid = e.currentTarget.dataset.appid
         var appurl = e.currentTarget.dataset.appurl
-        if(url){
+        console.log(url)
+        if(url.includes('?cate')){
+          let params = url.split('?')
+          if(params[1].includes('cate')){
+            let cateid = params[1].split('=')[1]
+            wx.setStorageSync("cateid", cateid)
+          }
+          wx.switchTab({
+            url: url,
+          })
+        }else{
           wx.navigateTo({
             url: url,
             fail: function () {

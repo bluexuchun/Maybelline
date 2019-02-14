@@ -17,10 +17,10 @@
   <view class="page header-sort navbar goodslist" style='padding-bottom:0'>
 
     <!--商品排序-->
-    <scroll-view scroll-x="{{true}}" class="nav-tab">
-      <view class="nav-tab-item {{currentTab == -1 ?'cur':''}}" data-type="-1" data-order="" data-id="" bindtap="tabNav">全部分类</view>
+    <scroll-view scroll-x class="nav-tab" scroll-into-view="{{current2name}}">
+      <view class="nav-tab-item {{currentTab == -1 ?'cur':''}}" id="all" data-type="-1" data-order="" data-id="" bindtap="tabNav">全部分类</view>
       <!-- 正在改进的 -->
-      <view wx:for="{{category_parent}}" wx:key="item" class="nav-tab-item {{currentTab == item.id?'cur':''}}" data-type="{{item.id}}" data-id="{{item.id}}" bindtap="tabNav">{{item.name}}</view>
+      <view wx:for="{{category_parent}}" wx:key="item" id="cate{{item.id}}" class="nav-tab-item {{currentTab == item.id?'cur':''}}" data-type="{{item.id}}" data-id="{{item.id}}" bindtap="tabNav">{{item.name}}</view>
 
     </scroll-view>
     <!-- 原版 -->

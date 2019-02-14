@@ -585,7 +585,9 @@ Page({
   //     });
   //   }, true);
   // },
-  submit: function() {
+  submit: function(e) {
+    console.log(e)
+    let formid = e.detail.formId
     var that = this;
     console.log(this.data.list.goods);
     let giftlist = this.data.giftlist.giftgoodsid || [],
@@ -675,6 +677,7 @@ Page({
       'giftsuperlistid': giftsuperlistid,
       'huoquguige': that.data.list.goods,
       'balletId':that.data.balletId,
+      'formid':formid,
       'fail': function() {
         console.log('1111');
       }

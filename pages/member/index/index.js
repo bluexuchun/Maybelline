@@ -55,9 +55,6 @@ Page({
             });
           }
         });
-
-        // 店铺装修 会员中心
-        diypage.get(this, 'member', function (res) {});
     },
     getInfo: function(){
         var $this = this;
@@ -95,12 +92,12 @@ Page({
       })
     },
     onShow: function(){
-        this.getInfo();
-        var $this = this;
-        $this.setData({
-          imgUrl: app.globalData.approot
-        });
-        wx.getSetting({
+      this.getInfo();
+      var $this = this;
+      $this.setData({
+        imgUrl: app.globalData.approot
+      });
+      wx.getSetting({
     		success: function(res) {
     			var limits = res.authSetting['scope.userInfo'];
     			$this.setData({limits: limits})
@@ -112,6 +109,10 @@ Page({
     			}
     		}
     	})
+      // 店铺装修 会员中心
+      diypage.get(this, 'member', function (res) {
+        console.log(res)
+      });
     },
     onShareAppMessage: function () {
         return core.onShareAppMessage();

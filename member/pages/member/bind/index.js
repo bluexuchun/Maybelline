@@ -13,6 +13,7 @@ var core = app.requirejs('core');
 var foxui = app.requirejs('foxui');
 var $ = app.requirejs('jquery');
 var sensors = require('../../../../utils/sensorsdata.min.js');
+const Crypto = require('../../../../utils/aes.js')
 Page({
     data: {
       isCheck: false,
@@ -114,40 +115,34 @@ Page({
             foxui.toast(this, "请填写5位短信验证码");
             return;
         }
-        // if(!postData.password || postData.password==''){
-        //     foxui.toast(this, "请填写登录密码");
-        //     return;
-        // }
-        // if(!postData.password1 || postData.password1==''){
-        //     foxui.toast(this, "请确认登录密码");
-        //     return;
-        // }
-        // if(postData.password != postData.password1){
-        //     foxui.toast(this, "两次输入的密码不一致");
-        //     return;
-        // }
         console.log($this.data.isCheck);
         if(!$this.data.isCheck){
           foxui.toast(this, "请同意隐私条款");
           return;
         }
         this.setData({submit: true, subtext: "正在绑定..."});
-
-        core.post('member/bind/submit', postData, function(ret){
-          app.sensors.track('PhoneBinded', {
-
-          });
+        let data = postData
+        let jsonData = JSON.stringify(data)
+        data = Crypto.CryptoJS.encrypt(jsonData, Crypto.keyCrypto.key, Crypto.keyCrypto.iv)
+        core.get('member/bind/submit', {
+          crydata:data
+        }, function(ret){
             if(ret.error==92001||ret.error==92002){
                 core.confirm(ret.message, function () {
-                    postData.confirm = 1;
-                    core.post('member/bind/submit', postData, function(ret2){
-                        if(ret2.error>0){
-                            foxui.toast($this, ret2.message);
-                        }else{
-                            wx.navigateBack();
-                        }
-                        $this.setData({submit: false, subtext: "立即绑定", "postData.confirm": 0});
-                    }, true, true, true);
+                  postData.confirm = 1;
+                  let newdata = postData
+                  let jsonData = JSON.stringify(newdata)
+                  newdata = Crypto.CryptoJS.encrypt(jsonData, Crypto.keyCrypto.key, Crypto.keyCrypto.iv)
+                  core.get('member/bind/submit', {
+                    crydata: newdata
+                  }, function(ret2){
+                      if(ret2.error>0){
+                          foxui.toast($this, ret2.message);
+                      }else{
+                          wx.navigateBack();
+                      }
+                      $this.setData({submit: false, subtext: "立即绑定", "postData.confirm": 0});
+                  }, true, true, true);
                 })
                 return;
             }
@@ -162,7 +157,6 @@ Page({
     imageChange:function(){
       var $this = this;
       core.get('member/bind/imageChange',{},function(result){
-        console.log(result)
         $this.setData({ verifycode_img: result.verifycode_img});
       });
     },

@@ -1,5 +1,7 @@
 var app = getApp(), $ = app.requirejs('jquery'), core = app.requirejs('core'), foxui = app.requirejs('foxui'),diyform = app.requirejs('biz/diyform');
 var sensors = require('../../utils/sensorsdata.min.js');
+const Crypto = require('../../utils/aes.js')
+
 module.exports = {
   number: function (e,$this) {
     var dataset = core.pdata(e), val = foxui.number($this, e), id = dataset.id, optionid = dataset.optionid, min = dataset.min, max = dataset.max;
@@ -197,22 +199,20 @@ module.exports = {
           });
         }
       } else {
-        console.log('添加')
-        core.post('member/cart/add', {
+        let useropenid = 'sns_wa_' + app.getCache('userinfo_openid')
+        let data = {
           id: $this.data.id,
           total: $this.data.total,
           optionid: optionid,
-          diyformdata: diydata.f_data
+          diyformdata: diydata.f_data,
+          openid: useropenid
+        }
+        let jsonData = JSON.stringify(data)
+        data = Crypto.CryptoJS.encrypt(jsonData, Crypto.keyCrypto.key, Crypto.keyCrypto.iv)
+        core.get('member/cart/add', {
+          crydata:data
         }, function (ret) {
-          // app.sensors.track('SubmitToCart', {
-          //   product_id: $this.data.id,
-          //   submit_type: "direct",
-          //   goods_name: ""
-          // });
-
           if (ret.error == 0) {
-            console.log(ret)
-            // foxui.toast($this, "添加成功");
             wx.showToast({
               icon: 'success',
               title: '添加购物车成功',
@@ -249,9 +249,16 @@ module.exports = {
     if (active =='') {
       $this.setData({slider:'in', show:true})
     }
-   
-    core.get('goods/get_picker', {id:id,optionid:$this.data.searchid }, function (result) {
-      console.log(result,'result');
+    let data = {
+      id: id, 
+      optionid: $this.data.searchid 
+    }
+    let jsonData = JSON.stringify(data)
+    data = Crypto.CryptoJS.encrypt(jsonData, Crypto.keyCrypto.key, Crypto.keyCrypto.iv)
+    core.get('goods/get_picker', {
+      crydata:data
+    }, function (result) {
+
       if (!result.goods.presellstartstatus && result.goods.presellstartstatus != undefined && result.goods.ispresell == '1'){
         foxui.toast($this, result.goods.presellstatustitle);
         return;

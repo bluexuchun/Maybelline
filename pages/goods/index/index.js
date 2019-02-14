@@ -64,43 +64,57 @@ Page({
         searchRecords: [],
         areas: [],
         limits: true,
-        modelShow: false
+        modelShow: false,
+        current2name:'all'
     },
-  jiagetiaozhuan:function(e){
-    var url=e.target.dataset.url;
-    console.log(url,'url')
-    wx.reLaunch({
-      url: url,
-    })
-  },
+    jiagetiaozhuan:function(e){
+      var url=e.target.dataset.url;
+      console.log(url,'url')
+      wx.reLaunch({
+        url: url,
+      })
+    },
     onLoad:function(options){
       var $this = this;
       $this.setData({ imgUrl: app.globalData.approot });
       setTimeout(function () {
         $this.setData({ areas: app.getCache("cacheset").areas });
       }, 3000)
-        if(!$.isEmptyObject(options)){
-            var isfilter = options.isrecommand||options.isnew||options.ishot||options.isdiscount||options.issendfree||options.istime?1:0;
-            this.setData({params: options, isfilter: isfilter, filterBtns: options, fromsearch: options.fromsearch||false});
-        }
-        this.initCategory();
-        if(!options.fromsearch){
-            this.getList();
-        }
-        this.getRecord();
-       
+      if(!$.isEmptyObject(options)){
+          var isfilter = options.isrecommand||options.isnew||options.ishot||options.isdiscount||options.issendfree||options.istime?1:0;
+          this.setData({params: options, isfilter: isfilter, filterBtns: options, fromsearch: options.fromsearch||false});
+      }
+      this.initCategory();
     },
     onShow: function(){
-        if(this.data.fromsearch){
-            this.setFocus();
+      if(this.data.fromsearch){
+          this.setFocus();
+      }
+      var $this = this;
+      wx.getSetting({
+        success: function(res) {
+          var limits = res.authSetting['scope.userInfo'];
+          $this.setData({limits: limits})	
         }
-        var $this = this;
-        wx.getSetting({
-    	  success: function(res) {
-    	    var limits = res.authSetting['scope.userInfo'];
-    	    $this.setData({limits: limits})	
-    	  }
+      })
+      // 加载分类的id
+      let cateid = wx.getStorageSync("cateid")
+      if (cateid) {
+        $this.setData({
+          params: {
+            cate: cateid,
+          },
+          currentTab: cateid
         })
+      }
+      this.initCategory(cateid);
+      $this.setData({
+        page:1,
+        list:[]
+      })
+      this.getList();
+
+      wx.setStorageSync("cateid", null)
     },
     onReachBottom:function(){
         if(this.data.loaded || this.data.list.length==this.data.total){
@@ -108,9 +122,22 @@ Page({
         }
         this.getList();
     },
-    initCategory:function(){
+    initCategory:function(cateid){
         var $this = this;
         core.get('goods/get_category', {} ,function(result){
+            if(cateid){
+              if (result.allcategory.parent) {
+                result.allcategory.parent.map((v, i) => {
+                  console.log(v);
+                  if (v.id == cateid) {
+                    console.log('cate'+v.id)
+                    $this.setData({
+                      current2name: 'cate'+v.id
+                    })
+                  }
+                })
+              }
+            }
             $this.setData({
                 allcategory: result.allcategory,
                 category_parent: result.allcategory.parent,
@@ -124,12 +151,13 @@ Page({
     },
     getList: function(){
         var $this = this;
+
         $this.setData({loading:true});
         $this.data.params.page = $this.data.page;
         core.get('goods/get_list', $this.data.params ,function(result){
         	console.log(result)
           var data = { loading: false, count: result.total,show: true};
-            if(!result.list){
+            if(result.list.length == 0){
                 result.list = [];
             }
             if(result.list.length>0){
