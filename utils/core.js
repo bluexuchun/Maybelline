@@ -89,11 +89,9 @@ module.exports = {
         wx.request(op);
     },
     post: function (routes, args, callback, hasloading, session) {
-      console.log('post', routes, args)
-        this.json(routes, args, callback, hasloading, false, session)
+        this.json(routes, args, callback, hasloading, true, session)
     },
     get: function (routes, args, callback, hasloading, session) {
-      console.log('get', routes, args)
         this.json(routes, args, callback, hasloading, true, session)
     },
     getDistanceByLnglat: function (lng1, lat1, lng2, lat2) {

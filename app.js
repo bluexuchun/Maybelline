@@ -365,7 +365,7 @@ App({
       flag: false,
     },
      globalData: {
-       appid: "wx3d5e036c7ca0e723",
+       appid: "wx15ade215f1447bda",
        api: "https://arvato.widiazine.cn/app/arvato_shop_api.php?i=3",
        approot: "https://arvato.widiazine.cn/app/arvato_shop/",
       //  api: "https://wechatmini.maybellinechina.com/app/arvato_shop_api.php?i=3",
