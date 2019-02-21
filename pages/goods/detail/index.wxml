@@ -495,11 +495,10 @@
     </view>
     <!-- 植村秀推荐 -->
      <view class='zcx_list' wx:if="{{goods.detail_dp}}">
-        <view class='zcx_list_item' wx:for='{{goods.detail_dp}}' wx:key='index' style="width:33.3%" data-link='{{goods.detail_xcxlink[index]}}' bindtap='linkTo'>
-          <image src='{{item}}' mode='widthFix' style="width:auto"></image>
+        <view class='zcx_list_item' wx:for='{{goods.detail_dp}}' wx:key='index' data-link='{{goods.detail_xcxlink[index]}}' bindtap='linkTo'>
+          <image src='{{item}}' data-id='{{index}}' data-parent="dpimg" bindload="comimgcal" style="width:{{keylists[index].width}}px;height:{{keylists[index].height}}px;"></image>
         </view>
    </view>
-     <!-- 植村秀推荐 -->
   <!-- 最后的富文本 -->
         <view class="goods-detail-info {{ info }}" style=';box-sizing: border-box;margin-top:0'>
       <view class="wxParse" style='overflow: hidden;'>

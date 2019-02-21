@@ -9,8 +9,8 @@
   color: #cecece;
 }
 .fui-copyright-group image{
-  width: 60rpx;
-  height: 60rpx;
+  width: 40rpx;
+  height: 40rpx;
   vertical-align: middle;
   margin-right: 10rpx;
 }

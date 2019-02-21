@@ -1611,6 +1611,30 @@ Page({
       url: '../index/index',
     })
   },
+  // 计算搭配图片的属性
+  comimgcal: function (e) {
+    console.log(e)
+    let keyname = e.currentTarget.dataset.parent
+    let detail = e.detail
+    let id = e.currentTarget.dataset.id
+    let keylists = this.data.keylists || []
+    let systeminfo = wx.getStorageSync('systemInfo')
+    let screenWidth = systeminfo.screenWidth
+    let ratio = screenWidth / 750
+
+    keylists.push({
+      id: id,
+      name: keyname,
+      width: detail.width * ratio,
+      height: detail.height * ratio
+    })
+
+    this.setData({
+      keylists
+    })
+
+    console.log(this.data.keylists)
+  },
   // 喜欢&不喜欢
   toggleLike:function(e){
     console.log(e)
