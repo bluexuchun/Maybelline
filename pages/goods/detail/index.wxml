@@ -493,6 +493,13 @@
           <image  bindload="imageLoad" data-type="kouhong" style='width:100%' mode="widthFix" src='{{khUrl}}' bindload="imageLoad"></image>
       </view>
     </view>
+    <!-- 植村秀推荐 -->
+     <view class='zcx_list' wx:if="{{goods.detail_dp}}">
+        <view class='zcx_list_item' wx:for='{{goods.detail_dp}}' wx:key='index' style="width:33.3%" data-link='{{goods.detail_xcxlink[index]}}' bindtap='linkTo'>
+          <image src='{{item}}' mode='widthFix' style="width:auto"></image>
+        </view>
+   </view>
+     <!-- 植村秀推荐 -->
   <!-- 最后的富文本 -->
         <view class="goods-detail-info {{ info }}" style=';box-sizing: border-box;margin-top:0'>
       <view class="wxParse" style='overflow: hidden;'>

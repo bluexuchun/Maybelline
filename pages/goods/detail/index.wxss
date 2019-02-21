@@ -1470,3 +1470,16 @@ display: inline-block;
   border-radius: 8px;
   font-size:28rpx;
 }
+
+.zcx_list{
+   background: #000;
+   height:506rpx;
+}
+.zcx_list_item{
+  height:506rpx;
+  display: inline-block;
+}
+.zcx_list_item image{
+  display: block;
+  height:100%;
+}
