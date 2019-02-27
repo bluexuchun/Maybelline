@@ -320,6 +320,7 @@ Page({
     	var $this = this;
       	var res = wx.getSystemInfoSync()
         var sysset = app.getCache('sysset');
+        core.getToken($this)
         $this.getShop();
         $this.getRecommand();
         getApp().checkAuth();
@@ -403,7 +404,7 @@ Page({
         if (isdot == "hidden") {
           $this.data.result[type] = Number(res.windowWidth / width * height);
         } else {
-          $this.data.result[type] = Number(res.windowWidth / width * height) + Number(res.windowWidth / width * 75);
+          $this.data.result[type] = Number(res.windowWidth / width * height);
         }
         if (!$this.data[type] || ($this.data[type] && result[type] < $this.data[type])) {
           $this.setData({ result: $this.data.result });

@@ -24,12 +24,11 @@ module.exports = {
         args = args || {};
         args.comefrom = 'wxapp';
         args.openid = 'sns_wa_' + userinfo_openid;
-        
-        
         if (usermid) {
             args.mid = usermid.mid;
             args.merchid = args.merchid || usermid.merchid;
         }
+        // args.token = wx.getStorageSync("tokenId")
         var self = this;
         if (hasloading) {
             // self.loading();
@@ -273,5 +272,17 @@ module.exports = {
             }
         });
         return obj;
+    },
+
+    /**
+     * 获取token值
+     */
+    getToken: function(page){
+      this.get('auth/get_token', { 
+        sessionid: wx.getStorageSync("sessionid")
+      },function(data){
+        console.log(data)
+        wx.setStorageSync("tokenId", data.token)
+      })
     }
 };

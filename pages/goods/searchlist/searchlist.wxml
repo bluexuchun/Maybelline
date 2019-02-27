@@ -14,7 +14,7 @@
     </view>
   </view>
 </view>
-<view class='fui-goods-group {{listmode}}' style='background:#fff'>
+<view class='fui-goods-group {{listmode}}' style='background:#fff;margin:0rpx;box-sizing:border-box;padding:55rpx 30rpx 0rpx;min-height:100vh;'>
       <block wx:for="{{list}}" wx:key="">
         <template is="tpl_list" data="{{item}}" />
       </block>
